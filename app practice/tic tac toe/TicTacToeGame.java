@@ -48,10 +48,9 @@ public class TicTacToeGame {
                 continue;
             }
 
-            System.out.println("Player: " + currentPlayer.getName() + ", please enter your next move in [row,column] :");
+            System.out.println(currentPlayer.getName() + ", please enter your next move in [row,column] :");
             Scanner inputScanner = new Scanner(System.in);
             String s = inputScanner.nextLine();
-            inputScanner.close();
             String[] values = s.split(",");
             int inputRow = Integer.valueOf(values[0]);
             int inputCol = Integer.valueOf(values[1]);
@@ -68,10 +67,10 @@ public class TicTacToeGame {
             if(isWinner){
                 gameBoard.printBoard();
                 winner = currentPlayer;
+                inputScanner.close();
                 return GameStatus.WIN;
             }
         }
-
         return GameStatus.DRAW;
     }
 
@@ -82,25 +81,25 @@ public class TicTacToeGame {
         boolean antiDiagMatch = true;
 
         for(int i=0; i< gameBoard.getSize(); i++){
-            if(gameBoard.getBoard()[i][col].equals(null) || gameBoard.getBoard()[i][col].getPieceType() != pieceType){
+            if(gameBoard.getBoard()[i][col] == null || gameBoard.getBoard()[i][col].getPieceType() != pieceType){
                 rowMatch = false;
             }
         }
 
         for(int i=0; i<gameBoard.getSize(); i++){
-            if(gameBoard.getBoard()[row][i].equals(null) || gameBoard.getBoard()[row][col].getPieceType() != pieceType){
+            if(gameBoard.getBoard()[row][i] == null || gameBoard.getBoard()[row][i].getPieceType() != pieceType){
                 colMatch = false;
             }
         }
 
         for(int i=0, j=0; i<gameBoard.getSize(); i++, j++){
-            if(gameBoard.getBoard()[i][j].equals(null) || gameBoard.getBoard()[i][j].getPieceType() != pieceType){
+            if(gameBoard.getBoard()[i][j] == null || gameBoard.getBoard()[i][j].getPieceType() != pieceType){
                 diagMatch = false;
             }
         }
 
         for(int i=0, j=gameBoard.getSize()-1; i<gameBoard.getSize(); i++, j--){
-            if(gameBoard.getBoard()[i][j].equals(null) || gameBoard.getBoard()[i][j].getPieceType() != pieceType){
+            if(gameBoard.getBoard()[i][j] == null || gameBoard.getBoard()[i][j].getPieceType() != pieceType){
                 antiDiagMatch = false;
             }
         }

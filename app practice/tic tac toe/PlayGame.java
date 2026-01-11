@@ -13,8 +13,10 @@ public class PlayGame {
         switch(status){
             case WIN:
                 System.out.println(game.getWinner().getName() + " is the winner.");
+                break;
             case DRAW:
                 System.out.println("Game is a draw");
+                break;
             default:
                 System.out.println("Game Ends");
                 break;
